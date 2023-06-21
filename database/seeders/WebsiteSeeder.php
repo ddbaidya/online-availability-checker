@@ -14,7 +14,7 @@ class WebsiteSeeder extends Seeder
     public function run(): void
     {
         Website::create([
-            'link' => 'debdulal.com',
+            'url' => 'debdulal.com',
             'status' => true,
             'interval' => 1,
             'history' => 7

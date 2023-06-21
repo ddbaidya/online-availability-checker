@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->id();
-            $table->string('link');
+            $table->string('url');
             $table->boolean('status')->default(false);
             $table->integer('interval')->default(30);
             $table->integer('history')->default(7);
