@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class OnlineStatusCheckService
@@ -32,10 +33,13 @@ class OnlineStatusCheckService
      */
     public function check($website)
     {
-        $response = Http::get($website);
-        if ($response->status() >= 200 && $response->status() < 300) {
-            return true;
+        try {
+            $response = Http::get($website);
+            if ($response->status() >= 200 && $response->status() < 300) {
+                return true;
+            }
+        } catch (Exception $e) {
+            return false;
         }
-        return true;
     }
 }

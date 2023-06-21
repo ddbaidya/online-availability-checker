@@ -19,5 +19,11 @@ class WebsiteSeeder extends Seeder
             'interval' => 1,
             'history' => 7
         ]);
+        Website::create([
+            'url' => 'vxvxcvxcv.com',
+            'status' => true,
+            'interval' => 1,
+            'history' => 7
+        ]);
     }
 }
