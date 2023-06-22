@@ -12,7 +12,7 @@ class CheckerController extends Controller
      */
     public function checkOnline($key)
     {
-        if ($key == 'ovi') {
+        if ($key == 'wmve8isg18ky7ne4bm942djvo') {
             Artisan::call('online:check');
         }
     }

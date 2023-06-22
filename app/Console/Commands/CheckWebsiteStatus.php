@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\OfflineNotificationMail;
 use App\Models\Website;
 use App\Models\WebsiteStatusResult;
 use App\Services\OnlineStatusCheckService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class CheckWebsiteStatus extends Command
 {
@@ -53,6 +55,10 @@ class CheckWebsiteStatus extends Command
                 'last_update' => now(),
                 'last_offline' => !$online_status ? now() : $website['last_offline']
             ];
+
+            if (!$online_status) {
+                Mail::to('ovibaidya72@gmail.com')->send(new OfflineNotificationMail($website['url']));
+            }
         }
         WebsiteStatusResult::insert($results);
         Website::upsert($website_update_online, 'id');
