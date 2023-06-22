@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WebsiteController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    Artisan::call('online:check');
-    //return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
+
+Route::get('/check-online/{key}', [CheckerController::class, 'checkOnline'])->name('check.online');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
