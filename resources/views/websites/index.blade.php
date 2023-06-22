@@ -60,7 +60,14 @@
                                         <td>
                                             <!-- Button trigger modal -->
                                             <a href="{{ route('admin.websites.edit', $website->id) }}" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                                Edit
+                                                <span class="d-flex align-content-center align-items-center">
+                                                    <i class='bx bx-edit me-1'></i> Edit
+                                                </span>
+                                            </a>
+                                            <a href="{{ route('admin.websites.show', $website->id) }}" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
+                                                <span class="d-flex align-content-center align-items-center">
+                                                    <i class='bx bx-send me-1'></i> View
+                                                </span>
                                             </a>
                                         </td>
                                     </tr>
@@ -75,5 +82,4 @@
             </div>
         </div>
     </div>
-    <!-- end row -->
 @endsection

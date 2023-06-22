@@ -35,4 +35,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], fu
     Route::get('websites/{website}/edit', [WebsiteController::class, 'edit'])->name('websites.edit');
     Route::post('websites/{website}/edit', [WebsiteController::class, 'update'])->name('websites.update');
     Route::delete('/websites/{website}/delete', [WebsiteController::class, 'delete'])->name('websites.delete');
+
+    Route::get('/websites/{website}', [WebsiteController::class, 'show'])->name('websites.show');
 });

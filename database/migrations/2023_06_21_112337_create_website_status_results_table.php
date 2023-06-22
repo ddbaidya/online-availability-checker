@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('website_status_results', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('website_id');
             $table->string('url');
             $table->boolean('status')->default(false);
             $table->timestamp('check_time')->useCurrent();

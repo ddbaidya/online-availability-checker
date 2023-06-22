@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WebsiteRequest;
 use App\Models\Website;
+use App\Models\WebsiteStatusResult;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,17 @@ class WebsiteController extends Controller
     {
         $websites = Website::paginate(20);
         return view('websites.index', compact('websites'));
+    }
+
+    /**
+     * Display Website.
+     *
+     * @param \App\Models\Website $website
+     */
+    public function show(Website $website)
+    {
+        $histories = WebsiteStatusResult::where('website_id', $website->id)->latest()->paginate(20);
+        return view('websites.details', compact('website', 'histories'));
     }
 
     /**
