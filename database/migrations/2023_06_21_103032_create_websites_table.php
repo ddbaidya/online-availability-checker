@@ -17,6 +17,9 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->integer('interval')->default(30);
             $table->integer('history')->default(7);
+            $table->timestamp('last_offline')->nullable();
+            $table->boolean('online_status')->default(false);
+            $table->timestamp('last_update')->nullable();
             $table->timestamps();
         });
     }

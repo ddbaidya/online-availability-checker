@@ -13,6 +13,16 @@
                         <span key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+
+                <li class="menu-title" key="t-menu">Websitess</li>
+
+                <li class="{{ request()->is('admin/websites*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.websites') }}" class="waves-effect {{ request()->is('admin/websites*') ? 'active' : '' }}">
+                        <i class="bx bx-news"></i>
+                        <span key="t-dashboards">Websites</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->
