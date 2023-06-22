@@ -32,4 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], fu
     Route::get('websites', [WebsiteController::class, 'index'])->name('websites');
     Route::get('websites/create', [WebsiteController::class, 'create'])->name('websites.create');
     Route::post('websites/create', [WebsiteController::class, 'store'])->name('websites.store');
+    Route::get('websites/{website}/edit', [WebsiteController::class, 'edit'])->name('websites.edit');
+    Route::post('websites/{website}/edit', [WebsiteController::class, 'update'])->name('websites.update');
+    Route::delete('/websites/{website}/delete', [WebsiteController::class, 'delete'])->name('websites.delete');
 });

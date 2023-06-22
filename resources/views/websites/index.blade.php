@@ -24,6 +24,7 @@
                                 <tr>
                                     <th class="align-middle">SL.</th>
                                     <th class="align-middle">Website</th>
+                                    <th class="align-middle">Sync Status</th>
                                     <th class="align-middle">Online Status</th>
                                     <th class="align-middle">Last Offline</th>
                                     <th class="align-middle">Last Update</th>
@@ -35,6 +36,13 @@
                                     <tr>
                                         <td>{{ $loop->index + $websites->firstItem() }}</td>
                                         <td>{{ $website->url }}</td>
+                                        <td>
+                                            @if ($website->status)
+                                                <span class="badge badge-pill badge-soft-success font-size-12">Active</span>
+                                            @else
+                                                <span class="badge badge-pill badge-soft-danger font-size-12">Deactive</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if ($website->online_status)
                                                 <span class="badge badge-pill badge-soft-success font-size-12">Online</span>
@@ -51,9 +59,9 @@
                                         </td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                View Details
-                                            </button>
+                                            <a href="{{ route('admin.websites.edit', $website->id) }}" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
+                                                Edit
+                                            </a>
                                         </td>
                                     </tr>
                                 @empty

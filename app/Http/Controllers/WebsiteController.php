@@ -34,6 +34,7 @@ class WebsiteController extends Controller
      * Store website.
      *
      * @param \App\Http\Requests\WebsiteRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(WebsiteRequest $request)
     {
@@ -45,5 +46,50 @@ class WebsiteController extends Controller
         } catch (Exception $e) {
             return redirect()->route('admin.websites')->with(['status' => false, 'title' => 'Something went wrong!']);
         }
+    }
+
+    /**
+     * Display edit page.
+     *
+     * @param \App\Models\Website $website
+     * @return \Illuminate\View\View
+     */
+    public function edit(Website $website)
+    {
+        return view('websites.edit', compact('website'));
+    }
+
+    /**
+     * Update website.
+     *
+     * @param \App\Models\Website $website
+     * @param \App\Http\Requests\WebsiteRequest $request
+     */
+    public function update(Website $website, WebsiteRequest $request)
+    {
+        try {
+            $website->url = $request->url;
+            $website->status = $request->status;
+            if ($website->save()) {
+                return redirect()->route('admin.websites')->with(['status' => true, 'title' => 'Website updated!!']);
+            }
+            throw (new Exception());
+        } catch (Exception $e) {
+            return redirect()->route('admin.websites')->with(['status' => false, 'title' => 'Something went wrong!']);
+        }
+    }
+
+    /**
+     * Delete website.
+     *
+     *@param \App\Models\Website $website
+     */
+    public function delete(Website $website)
+    {
+        if ($website) {
+            $website->delete();
+            return response()->json([], 200);
+        }
+        return response()->json([], 404);
     }
 }
