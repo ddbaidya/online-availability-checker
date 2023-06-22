@@ -1,0 +1,7 @@
+.whitespace-normal {
+    white-space: normal !important;
+}
+
+.pagination .page-item .page-link {
+    border: 1px solid;
+}
