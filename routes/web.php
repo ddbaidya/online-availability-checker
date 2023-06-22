@@ -30,4 +30,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], fu
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('websites', [WebsiteController::class, 'index'])->name('websites');
+    Route::get('websites/create', [WebsiteController::class, 'create'])->name('websites.create');
+    Route::post('websites/create', [WebsiteController::class, 'store'])->name('websites.store');
 });
