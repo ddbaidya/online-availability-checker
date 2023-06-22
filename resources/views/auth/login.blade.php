@@ -1,4 +1,3 @@
-log
 <!doctype html>
 <html lang="en">
 
@@ -58,8 +57,7 @@ log
                                 </a>
                             </div>
                             <div class="p-2">
-                                <x-admin.error-messages />
-                                <x-admin.action-message />
+                                <x-error-messages />
                                 <form class="form-horizontal" action="" method="POST">
                                     @csrf
                                     <div class="mb-3">
