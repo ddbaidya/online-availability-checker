@@ -11,11 +11,11 @@ class AuthController extends Controller
     /**
      * Display login page.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function index()
     {
-        return view('auth.login');
+        return (auth()->check()) ? redirect()->route('admin.dashboard') : view('auth.login');
     }
 
     /**
